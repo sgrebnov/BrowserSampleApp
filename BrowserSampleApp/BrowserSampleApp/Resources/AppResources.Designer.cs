@@ -79,6 +79,15 @@ namespace BrowserSampleApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to bookmarks.
+        /// </summary>
+        public static string AppBarMenuItemBookmark {
+            get {
+                return ResourceManager.GetString("AppBarMenuItemBookmark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Menu Item.
         /// </summary>
         public static string AppBarMenuItemText {

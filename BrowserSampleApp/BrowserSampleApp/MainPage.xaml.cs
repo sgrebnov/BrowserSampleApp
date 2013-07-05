@@ -33,6 +33,19 @@ namespace BrowserSampleApp
             WebBrowserWindow.Navigate(new Uri(siteUri, UriKind.Absolute));
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (NavigationContext.QueryString.ContainsKey("bookmarkUrl"))
+            {
+                string url = NavigationContext.QueryString["bookmarkUrl"];
+                SiteUrl.Text = url;
+
+                OpenSite(url);
+            }
+        }
+
         // Sample code for building a localized ApplicationBar
         private void BuildLocalizedApplicationBar()
         {
@@ -47,8 +60,31 @@ namespace BrowserSampleApp
             appBarButton.Click += appBarButton_Click;
 
             //// Create a new menu item with the localized string from AppResources.
-            //ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-            //ApplicationBar.MenuItems.Add(appBarMenuItem);
+            ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemBookmark);
+            ApplicationBar.MenuItems.Add(appBarMenuItem);
+
+            appBarMenuItem.Click += appBarMenuItem_Click;
+
+        }
+
+        void appBarMenuItem_Click(object sender, EventArgs e)
+        {
+            if (WebBrowserWindow.Source == null)
+            {
+                MessageBox.Show("Please load site first");
+                return;
+            }
+
+            var title = "Unknown";
+            try
+            {
+               title = WebBrowserWindow.InvokeScript("eval", "document.title").ToString();
+            }
+            catch{}
+
+            var uri = WebBrowserWindow.Source.ToString();
+            
+            Bookmarks.Add(title, uri);
         }
 
         /// <summary>

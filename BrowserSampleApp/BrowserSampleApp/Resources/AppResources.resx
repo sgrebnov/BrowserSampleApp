@@ -137,4 +137,7 @@
   <data name="AppBarBackButtonText" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="AppBarMenuItemBookmark" xml:space="preserve">
+    <value>Add to bookmarks</value>
+  </data>
 </root>
