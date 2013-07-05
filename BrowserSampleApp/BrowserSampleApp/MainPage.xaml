@@ -41,12 +41,15 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="Internet Explorer 12" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="Demo" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Button Click="ButtonGo_OnClick" Name="ButtonGo" Content="GO" HorizontalAlignment="Left" Margin="375,10,0,0" VerticalAlignment="Top"/>
+            <TextBox Name="SiteUrl" HorizontalAlignment="Left" Height="65" Margin="0,10,0,0" TextWrapping="Wrap" Text="http://xbox.com" VerticalAlignment="Top" Width="380"/>
+            <phone:WebBrowser Name="WebBrowserWindow" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Height="510" Width="436"/>
 
         </Grid>
 

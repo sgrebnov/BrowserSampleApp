@@ -22,6 +22,17 @@ namespace BrowserSampleApp
             //BuildLocalizedApplicationBar();
         }
 
+        private void OpenSite(string siteUri)
+        {
+            // arg checking
+            if (string.IsNullOrEmpty(siteUri))
+            {
+                throw  new ArgumentNullException("siteUri uri can not be null or empty");
+            }
+
+            WebBrowserWindow.Navigate(new Uri(siteUri, UriKind.Absolute));
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
@@ -37,5 +48,23 @@ namespace BrowserSampleApp
         //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
+
+        /// <summary>
+        /// Implements functionality to open site uri in browser control.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonGo_OnClick(object sender, RoutedEventArgs e)
+        {
+            // arg checcking
+
+            if (string.IsNullOrEmpty(SiteUrl.Text))
+            {
+                MessageBox.Show("Please type site url");
+                return;
+            }
+
+            OpenSite(SiteUrl.Text);
+        }
     }
 }
